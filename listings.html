@@ -1,0 +1,458 @@
+<!-- listings.html (Search and Filter Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Properties - MoveInn</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <link rel="stylesheet" href="app/static/css/css.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+  <!-- Header -->
+  <header class="bg-white shadow p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-600">MoveInn</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600">Home</a>
+        <a href="listings.html" class="text-gray-700 hover:text-blue-600">Browse</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+        <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+ 
+
+  <!-- Search and Filters Section -->
+  <section class="py-16 bg-blue-200 text-red-800">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-4">Browse and Find Your Ideal Home</h2>
+      <p class="text-lg mb-8">Use filters to narrow down your search for properties in Rwanda.</p>
+  
+      <!-- Animated Label -->
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10 animate-pulse text-red-900">
+        🔍 Find Your Perfect Property
+      </h2>
+  
+      <!-- Filter Form Grid -->
+      <div class="grid md:grid-cols-2 gap-x-6 gap-y-6 mb-10">
+        <!-- Location Filter -->
+        <div class="bg-white rounded-2xl p-4 shadow w-full">
+          <label for="location" class="block text-sm font-semibold mb-2">Location</label>
+          <input
+            type="text"
+            id="location"
+            placeholder="City or neighborhood"
+            class="w-full px-4 py-2 rounded-lg border border-gray-300"
+          />
+        </div>
+  
+        <!-- Type Filter -->
+        <div class="bg-white rounded-2xl p-4 shadow w-full">
+          <label for="typeFilter" class="block text-sm font-semibold mb-2">Property Type</label>
+          <select id="typeFilter" class="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800">
+            <option value="">All Types</option>
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="House">House</option>
+            <option value="Bungalow">Bungalow</option>
+            <option value="Studio">Studio</option>
+            <option value="Duplex">Duplex</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Penthouse">Penthouse</option>
+            <option value="Commercial Space">Commercial Space</option>
+            <option value="Land / Plot">Land / Plot</option>
+            <option value="Office Space">Office Space</option>
+            <option value="Serviced Apartment">Serviced Apartment</option>
+            <option value="Shared Room / Hostel">Shared Room / Hostel</option>
+          </select>
+        </div>
+  
+        <!-- Rent/Sale Filter -->
+        <div class="bg-white rounded-2xl p-4 shadow w-full">
+          <label for="rentSaleFilter" class="block text-sm font-semibold mb-2">Listing Type</label>
+          <select id="rentSaleFilter" class="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800">
+            <option value="">For Rent & For Sale</option>
+            <option value="rent">For Rent</option>
+            <option value="sale">For Sale</option>
+          </select>
+        </div>
+  
+        <!-- Sort Filter -->
+        <div class="bg-white rounded-2xl p-4 shadow w-full">
+          <label for="sortBy" class="block text-sm font-semibold mb-2">Sort By</label>
+          <select id="sortBy" class="w-full px-4 py-2 rounded-lg border border-gray-300 text-gray-800">
+            <option value="">Default</option>
+            <option value="price-asc">Price (Low → High)</option>
+            <option value="price-desc">Price (High → Low)</option>
+            <option value="size-desc">Size (Biggest First)</option>
+            <option value="year-desc">Year Built (Newest First)</option>
+          </select>
+        </div>
+  
+        <!-- Spacer -->
+        <div class="hidden md:block"></div>
+      </div>
+  
+      <!-- Keyword Search Centered -->
+      <div class="flex justify-center">
+        <div class="bg-white rounded-2xl p-6 shadow w-full md:w-1/2">
+          <label for="keywordSearch" class="block text-lg font-semibold mb-3 text-center animate-pulse">
+            Search by Title
+          </label>
+          <input
+            type="text"
+            id="keywordSearch"
+            placeholder="e.g. Cozy Home in Kimironko"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-800 text-center"
+          />
+        </div>
+      </div>
+    </div>
+ 
+            <div class="md:col-span-5 text-center mt-4">
+              <button
+                id="applyFilters"
+                class="bg-white text-blue px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300"
+              >
+                🔎 Search Properties
+              </button>
+              <button id="clearFilters" class="mt-2 ml-2 px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition">
+              Clear Filters
+            </button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+        
+  </section>
+
+ 
+
+  <main class="max-w-7xl mx-auto p-6">
+    <h2 class="text-2xl font-semibold mb-4">Browse Properties</h2>
+    <div id="propertyCount"></div>
+
+    <div id="property-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Properties will be injected here -->
+    
+    </div>
+
+
+  </main>
+
+  
+ 
+
+  <!-- Footer -->
+  <footer class="bg-white border-t py-6 text-center text-sm text-gray-500">
+    <p>&copy; 2025 MoveInn by Kemet Digimark. All rights reserved.</p>
+  </footer>
+
+
+  <script>
+
+
+fetch('properties.json')
+  .then(res => res.json())
+  .then(data => {
+    properties = data;
+    renderProperties(data); // initially show all
+  });
+
+    fetch('properties.json')
+    .then(response => response.json())
+    .then(data => {
+      const propertyList = document.getElementById('property-list');
+
+      data.forEach(property => {
+        const propertyCard = document.createElement('div');
+        propertyCard.id = `property-${property.id}`;
+        propertyCard.className = "bg-white rounded-2xl shadow overflow-hidden";
+
+        const bedrooms = property.details.Bedrooms;
+        const bathrooms = property.details.Bathrooms;
+        const price = property.price;
+        const image = property.image;
+        const title = property.title;
+
+        propertyCard.innerHTML = `
+          <img src="${image}" alt="Property" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="font-semibold text-lg">${title}</h3>
+            <p class="text-gray-600">${bedrooms} Beds • ${bathrooms} Baths • ${price}</p>
+            <a href="property.html?id=${property.id}" class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">View More</a>
+          </div>
+        `;
+
+        propertyList.appendChild(propertyCard);
+      });
+    })
+    .catch(error => {
+      console.error('Error loading properties:', error);
+    });
+
+  
+  document.getElementById('applyFilters').addEventListener('click', function () {
+    const location = document.getElementById('location').value.toLowerCase();
+    const type = document.getElementById('typeFilter').value.toLowerCase();
+    const rentSale = document.getElementById('rentSaleFilter').value.toLowerCase();
+    const keyword = document.getElementById('keywordSearch').value.toLowerCase();
+    
+
+    fetch('properties.json')
+      .then(response => response.json())
+      .then(data => {
+        const filtered = data.filter(property => {
+          const titleMatch = property.title.toLowerCase().includes(keyword);
+          const locationMatch = property.title.toLowerCase().includes(location) || property.description.toLowerCase().includes(location);
+          const typeMatch = type === "" || property.details["Property Type"].toLowerCase() === type;
+          const rentSaleMatch = rentSale === "" || (property.status && property.status.toLowerCase() === rentSale);
+          return titleMatch && locationMatch && typeMatch && rentSaleMatch;
+        });
+
+        // Clear and display filtered results
+        const propertyList = document.getElementById('property-list');
+        propertyList.innerHTML = "";
+
+        if (filtered.length === 0) {
+          propertyList.innerHTML = "<p class='col-span-3 text-center text-gray-600'>No matching properties found.</p>";
+          return;
+        }
+
+        filtered.forEach(property => {
+          const card = document.createElement('div');
+          card.className = "bg-white rounded-2xl shadow overflow-hidden";
+          card.innerHTML = `
+            <img src="${property.image}" alt="Property" class="w-full h-48 object-cover">
+            <div class="p-4">
+              <h3 class="font-semibold text-lg">${property.title}</h3>
+              <p class="text-gray-600">${property.details.Bedrooms} Beds • ${property.details.Bathrooms} Baths • ${property.price}</p>
+              <a href="property.html?id=${property.id}" class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">View More</a>
+            </div>
+          `;
+          propertyList.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching properties:", error);
+      });
+  });
+
+  document.querySelectorAll('#location, #typeFilter, #rentSaleFilter, #keywordSearch').forEach(input => {
+  input.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      document.getElementById('applyFilters').click();
+    }
+  });
+});
+
+const dictionary = [
+    "apartment", "villa", "house", "bungalow", "studio", "duplex", "townhouse",
+    "penthouse", "commercial", "space", "land", "plot", "office", "serviced", "shared",
+    "room", "hostel", "modern", "luxury", "cozy", "kigali", "kacyiru", "kimironko"
+  ];
+
+  // Simple Levenshtein Distance
+  function getEditDistance(a, b) {
+    const matrix = Array.from({ length: b.length + 1 }, () => []);
+    for (let i = 0; i <= b.length; i++) matrix[i][0] = i;
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        matrix[i][j] = b.charAt(i - 1) === a.charAt(j - 1)
+          ? matrix[i - 1][j - 1]
+          : Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  // Find the closest match from dictionary
+  function autocorrect(word) {
+    let closest = word;
+    let minDist = Infinity;
+    for (const dictWord of dictionary) {
+      const dist = getEditDistance(word.toLowerCase(), dictWord.toLowerCase());
+      if (dist < minDist && dist <= 2) { // only if close enough
+        minDist = dist;
+        closest = dictWord;
+      }
+    }
+    return closest;
+  }
+
+  // Hook autocorrect into keyword search
+  document.getElementById('applyFilters').addEventListener('click', () => {
+    const keywordInput = document.getElementById('keywordSearch');
+    const original = keywordInput.value.trim();
+    if (original) {
+      const corrected = autocorrect(original);
+      if (corrected !== original) {
+        keywordInput.value = corrected;
+        console.log(`Autocorrected "${original}" to "${corrected}"`);
+      }
+    }
+    applyFilters(); // re-run search with corrected term
+  });
+
+
+  document.getElementById('clearFilters').addEventListener('click', () => {
+  document.getElementById('location').value = '';
+  document.getElementById('typeFilter').value = '';
+  document.getElementById('rentSaleFilter').value = '';
+  document.getElementById('keywordSearch').value = '';
+  applyFilters();
+});
+
+   // Generate badges for property tags
+   fetch('properties.json')
+  .then(response => response.json())
+  .then(data => {
+    const listingsContainer = document.getElementById('listings');
+    listingsContainer.innerHTML = "";
+
+    data.forEach(property => {
+      // Generate badges for property tags
+      const tagBadges = (property.tagss || []).map(tag => {
+        let badgeClass = '';
+        switch (tag.toLowerCase()) {
+          case 'new':
+            badgeClass = 'badge-new';
+            break;
+          case 'hot':
+            badgeClass = 'badge-hot';
+            break;
+          case 'verified':
+            badgeClass = 'badge-verified';
+            break;
+          case 'discounted':
+            badgeClass = 'badge-discounted';
+            break;
+          default:
+            badgeClass = 'badge';
+        }
+        return `<span class="badge ${badgeClass}">${tag}</span>`;
+      }).join('');
+
+      const card = document.createElement('div');
+      card.className = "bg-white rounded-xl shadow p-4";
+      card.innerHTML = `
+        <img src="${property.image}" class="h-40 w-full object-cover rounded-md mb-2">
+        <h4 class="font-semibold text-lg">${property.title}</h4>
+        <p class="text-gray-600 mb-2">${property.price}</p>
+        <div class="mb-2">${tagBadges}</div>
+        <a href="property.html?id=${property.id}" class="inline-block mt-2 text-blue-600 hover:underline">View Property</a>
+      `;
+      listingsContainer.appendChild(card);
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const propertyCards = document.querySelectorAll(".property-list");
+  const countDisplay = document.getElementById("propertyCount");
+  countDisplay.textContent = `${propertyCards.length} properties found`;
+});
+
+async function loadData() {
+  const response = await fetch('properties.json');
+  const raw = await response.json();
+
+  // Filter valid entries
+  const data = raw.filter(p =>
+    p.location && p.squareMeters && p.bedrooms && p.price
+  );
+
+  const locations = [...new Set(data.map(p => p.location))]; // Unique locations
+
+  const inputs = data.map(p => [
+    locations.indexOf(p.location),
+    p.squareMeters,
+    p.bedrooms
+  ]);
+
+  const labels = data.map(p => p.price);
+
+  return { inputs, labels, locations };
+}
+
+// --- STEP 2: Normalize data ---
+function normalize(tensor) {
+  const { mean, variance } = tf.moments(tensor, 0);
+  return { tensor: tensor.sub(mean).div(variance.sqrt()), mean, variance };
+}
+
+// --- STEP 3: Build the model ---
+function createModel(inputShape) {
+  const model = tf.sequential();
+  model.add(tf.layers.dense({ inputShape: [inputShape], units: 16, activation: 'relu' }));
+  model.add(tf.layers.dense({ units: 8, activation: 'relu' }));
+  model.add(tf.layers.dense({ units: 1 }));
+  model.compile({ optimizer: 'adam', loss: 'meanSquaredError' });
+  return model;
+}
+
+// --- STEP 4: Train and save the model ---
+async function trainModel() {
+  const { inputs, labels, locations } = await loadData();
+  const inputTensor = tf.tensor2d(inputs);
+  const labelTensor = tf.tensor2d(labels, [labels.length, 1]);
+
+  const { tensor: normInputs, mean, variance } = normalize(inputTensor);
+
+  const model = createModel(normInputs.shape[1]);
+  await model.fit(normInputs, labelTensor, {
+    epochs: 50,
+    batchSize: 32,
+    shuffle: true,
+    callbacks: tf.callbacks.earlyStopping({ monitor: 'loss', patience: 5 })
+  });
+
+  // Save model and normalization data
+  await model.save('localstorage://price-predictor-model');
+  localStorage.setItem('normMean', JSON.stringify(mean.arraySync()));
+  localStorage.setItem('normVar', JSON.stringify(variance.arraySync()));
+  localStorage.setItem('locations', JSON.stringify(locations));
+}
+
+// --- STEP 5: Predict price ---
+async function predictPrice(location, squareMeters, bedrooms) {
+  const model = await tf.loadLayersModel('localstorage://price-predictor-model');
+  const mean = tf.tensor1d(JSON.parse(localStorage.getItem('normMean')));
+  const variance = tf.tensor1d(JSON.parse(localStorage.getItem('normVar')));
+  const locations = JSON.parse(localStorage.getItem('locations'));
+
+  const locIndex = locations.indexOf(location);
+  const input = tf.tensor2d([[locIndex, squareMeters, bedrooms]]);
+  const normalized = input.sub(mean).div(variance.sqrt());
+
+  const prediction = model.predict(normalized);
+  const price = await prediction.data();
+  return price[0].toFixed(2);
+}
+
+// Example usage:
+// await trainModel();
+// const result = await predictPrice("Kigali - Kicukiro", 100, 3);
+// console.log("Predicted Price:", result);
+
+
+
+
+
+  </script>
+</body>
+</html>

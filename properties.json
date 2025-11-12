@@ -1,0 +1,361 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Apartment in Kigali",
+    "price": "$500/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2018",
+    "size" : "120",
+     "neighborhood": "Kigali",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "tagss": ["New"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "description": "A beautifully furnished 2 bedroom apartment located in a secure, quiet neighborhood. Perfect for young professionals or a small family.",
+    "amenities": ["High-speed Internet", "24/7 Security", "Parking Space", "Balcony"],
+    "details": {
+      "Bedrooms": "2",
+      "Bathrooms": "2",
+      "Size": "120 sqm",
+      "Property Type": "Apartment",
+      "Furnishing": "Fully Furnished",
+      "Year Built": "2018"
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 2,
+    "title": "Luxury Villa in Kacyiru",
+    "price": "$1200/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2015",
+    "size" : "350",
+     "neighborhood": "Kacyiru",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "tagss": ["New", "Verified", "Discounted"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "A stunning luxury villa featuring a private pool, landscaped garden, and large open-plan kitchen. Ideal for expats or embassy staff.",
+    "amenities": ["Private Pool", "Garden", "Garage", "Security System"],
+    "details": {
+      "Bedrooms": "4",
+      "Bathrooms": "3",
+      "Size": "350 sqm",
+      "Property Type": "Villa",
+      "Furnishing": "Semi-Furnished",
+      "Year Built": "2015"
+     
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 3,
+    "title": "Cozy Home in Kimironko",
+    "price": "$800/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2010",
+    "size" : "180",
+     "neighborhood": "Kimironko",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "tagss": ["New", "Verified", "Discounted"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "Comfortable and cozy family home in a friendly neighborhood. Close to shops, schools, and public transport.",
+    "amenities": ["Backyard", "Water Tank", "Solar Heating", "Covered Parking"],
+    "details": {
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "Size": "180 sqm",
+      "Property Type": "House",
+      "Furnishing": "Unfurnished",
+      "Year Built": "2010"
+       
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 4,
+    "title": "Modern Apartment in Kigali",
+    "price": "$500/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2018",
+    "size" : "120",
+     "neighborhood": "Kigali",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "tagss": ["New", "Verified", "Discounted"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "A beautifully furnished 2 bedroom apartment located in a secure, quiet neighborhood. Perfect for young professionals or a small family.",
+    "amenities": ["High-speed Internet", "24/7 Security", "Parking Space", "Balcony"],
+    "details": {
+      "Bedrooms": "2",
+      "Bathrooms": "2",
+      "Size": "120 sqm",
+      "Property Type": "Apartment",
+      "Furnishing": "Fully Furnished",
+      "Year Built": "2018"
+       
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 5,
+    "title": "Luxury Villa in Kacyiru",
+    "price": "$120 000",
+    "image": "/img/house1.jpg",
+    "status": "sale",
+    "year": "2015",
+    "size" : "350",
+     "neighborhood": "Kacyiru",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "tagss": ["New", "Verified", "Discounted"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "A stunning luxury villa featuring a private pool, landscaped garden, and large open-plan kitchen. Ideal for expats or embassy staff.",
+    "amenities": ["Private Pool", "Garden", "Garage", "Security System"],
+    "details": {
+      "Bedrooms": "4",
+      "Bathrooms": "3",
+      "Size": "350 sqm",
+      "Property Type": "Villa",
+      "Furnishing": "Semi-Furnished",
+      "Year Built": "2015"
+      
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 6,
+    "title": "Cozy Home in Kimironko",
+    "price": "$80 000",
+    "image": "/img/house1.jpg",
+    "status": "sale",
+    "year": "2010",
+    "size" : "180",
+     "neighborhood": "Kimironko",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "Comfortable and cozy family home in a friendly neighborhood. Close to shops, schools, and public transport.",
+    "amenities": ["Backyard", "Water Tank", "Solar Heating", "Covered Parking"],
+    "details": {
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "Size": "180 sqm",
+      "Property Type": "House",
+      "Furnishing": "Unfurnished",
+      "Year Built": "2010"
+       
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 7,
+    "title": "Modern Apartment in Kigali",
+    "price": "$500/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2018",
+    "size" : "120",
+     "neighborhood": "Kigali",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "description": "A beautifully furnished 2 bedroom apartment located in a secure, quiet neighborhood. Perfect for young professionals or a small family.",
+    "amenities": ["High-speed Internet", "24/7 Security", "Parking Space", "Balcony"],
+    "details": {
+      "Bedrooms": "2",
+      "Bathrooms": "2",
+      "Size": "120 sqm",
+      "Property Type": "Apartment",
+      "Furnishing": "Fully Furnished",
+      "Year Built": "2018"
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 8,
+    "title": "Luxury Villa in Kacyiru",
+    "price": "$1200/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2015",
+    "size" : "350",
+     "neighborhood": "Kacyiru",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "A stunning luxury villa featuring a private pool, landscaped garden, and large open-plan kitchen. Ideal for expats or embassy staff.",
+    "amenities": ["Private Pool", "Garden", "Garage", "Security System"],
+    "details": {
+      "Bedrooms": "4",
+      "Bathrooms": "3",
+      "Size": "350 sqm",
+      "Property Type": "Villa",
+      "Furnishing": "Semi-Furnished",
+      "Year Built": "2015"
+     
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 9,
+    "title": "Cozy Home in Kimironko",
+    "price": "$800/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2010",
+    "size" : "180",
+     "neighborhood": "Kimironko",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "Comfortable and cozy family home in a friendly neighborhood. Close to shops, schools, and public transport.",
+    "amenities": ["Backyard", "Water Tank", "Solar Heating", "Covered Parking"],
+    "details": {
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "Size": "180 sqm",
+      "Property Type": "House",
+      "Furnishing": "Unfurnished",
+      "Year Built": "2010"
+       
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 10,
+    "title": "Modern Apartment in Kigali",
+    "price": "$500/mo",
+    "image": "/img/house1.jpg",
+    "status": "rent",
+    "year": "2018",
+    "size" : "120",
+     "neighborhood": "Kigali",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "A beautifully furnished 2 bedroom apartment located in a secure, quiet neighborhood. Perfect for young professionals or a small family.",
+    "amenities": ["High-speed Internet", "24/7 Security", "Parking Space", "Balcony"],
+    "details": {
+      "Bedrooms": "2",
+      "Bathrooms": "2",
+      "Size": "120 sqm",
+      "Property Type": "Apartment",
+      "Furnishing": "Fully Furnished",
+      "Year Built": "2018"
+       
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 11,
+    "title": "Luxury Villa in Kacyiru",
+    "price": "$120 000",
+    "image": "/img/house1.jpg",
+    "status": "sale",
+    "year": "2015",
+    "size" : "350",
+     "neighborhood": "Kacyiru",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "A stunning luxury villa featuring a private pool, landscaped garden, and large open-plan kitchen. Ideal for expats or embassy staff.",
+    "amenities": ["Private Pool", "Garden", "Garage", "Security System"],
+    "details": {
+      "Bedrooms": "4",
+      "Bathrooms": "3",
+      "Size": "350 sqm",
+      "Property Type": "Villa",
+      "Furnishing": "Semi-Furnished",
+      "Year Built": "2015"
+      
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  },
+  {
+    "id": 12,
+    "title": "Cozy Home in Kimironko",
+    "price": "$80 000",
+    "image": "/img/house1.jpg",
+    "status": "sale",
+    "year": "2010",
+    "size" : "180",
+     "neighborhood": "Kimironko",
+    "dateListed": "2025-04-25",
+    "tags": ["modern", "balcony", "scenic view", "family-friendly"],
+    "images": ["image1.jpg", "image2.jpg", "image3.jpg", "image1.jpg", "image2.jpg", "image3.jpg"], 
+    "latitude": -1.9435,
+    "longitude": 30.0594,
+    "description": "Comfortable and cozy family home in a friendly neighborhood. Close to shops, schools, and public transport.",
+    "amenities": ["Backyard", "Water Tank", "Solar Heating", "Covered Parking"],
+    "details": {
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "Size": "180 sqm",
+      "Property Type": "House",
+      "Furnishing": "Unfurnished",
+      "Year Built": "2010"
+       
+    },
+    "location": {
+      "lat": -1.9441,
+      "lng": 30.0619
+    }
+  }
+]

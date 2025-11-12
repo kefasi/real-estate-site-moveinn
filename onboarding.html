@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoveInn Onboarding</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+  <div class="max-w-3xl mx-auto p-6 bg-white rounded-xl shadow-md mt-10">
+    <h1 class="text-3xl font-bold text-center text-blue-700 mb-6">Buyer/Seller Onboarding</h1>
+
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <div>
+        <label class="block text-gray-700 font-medium">Are you a:</label>
+        <select id="userType" name="userType" class="w-full border border-gray-300 rounded px-4 py-2">
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="name" class="block text-gray-700 font-medium">Full Name</label>
+        <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-4 py-2">
+      </div>
+
+      <div>
+        <label for="email" class="block text-gray-700 font-medium">Email Address</label>
+        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-4 py-2">
+      </div>
+
+      <div>
+        <label for="phone" class="block text-gray-700 font-medium">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 rounded px-4 py-2">
+      </div>
+
+      <div id="buyerFields">
+        <label for="preferredLocation" class="block text-gray-700 font-medium">Preferred Location</label>
+        <input type="text" id="preferredLocation" name="preferredLocation" class="w-full border border-gray-300 rounded px-4 py-2">
+
+        <label for="budget" class="block text-gray-700 font-medium mt-4">Budget Range</label>
+        <input type="text" id="budget" name="budget" class="w-full border border-gray-300 rounded px-4 py-2">
+      </div>
+
+      <div id="sellerFields" class="hidden">
+        <label for="propertyLocation" class="block text-gray-700 font-medium">Property Location</label>
+        <input type="text" id="propertyLocation" name="propertyLocation" class="w-full border border-gray-300 rounded px-4 py-2">
+
+        <label for="propertyType" class="block text-gray-700 font-medium mt-4">Property Type</label>
+        <select id="propertyType" name="propertyType" class="w-full border border-gray-300 rounded px-4 py-2">
+            <option value="Apartment">Apartment</option>
+            <option value="Villa">Villa</option>
+            <option value="House">House</option>
+            <option value="Bungalow">Bungalow</option>
+            <option value="Studio">Studio</option>
+            <option value="Duplex">Duplex</option>
+            <option value="Townhouse">Townhouse</option>
+            <option value="Penthouse">Penthouse</option>
+            <option value="Commercial Space">Commercial Space</option>
+            <option value="Land / Plot">Land / Plot</option>
+            <option value="Office Space">Office Space</option>
+            <option value="Serviced Apartment">Serviced Apartment</option>
+            <option value="Shared Room / Hostel">Shared Room / Hostel</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const userType = document.getElementById('userType');
+    const buyerFields = document.getElementById('buyerFields');
+    const sellerFields = document.getElementById('sellerFields');
+
+    userType.addEventListener('change', () => {
+      if (userType.value === 'buyer') {
+        buyerFields.classList.remove('hidden');
+        sellerFields.classList.add('hidden');
+      } else {
+        buyerFields.classList.add('hidden');
+        sellerFields.classList.remove('hidden');
+      }
+    });
+    document.getElementById('onboarding-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = new FormData(this);
+
+  const data = {
+    name: form.get('name'),
+    email: form.get('email'),
+    role: form.get('role'),
+    message: form.get('message')
+  };
+
+  const response = await fetch('http://localhost:5000/submit-onboarding', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  });
+
+  const result = await response.json();
+  alert(result.message || result.error);
+});
+
+  </script>
+</body>
+</html>
